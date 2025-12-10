@@ -23,8 +23,6 @@ db.connect(err => {
     console.log('Sikeres adatbazis csatlakozás.');
 });
 
-
-
 app.listen(3001, () => {
     console.log('A szerver fut: http://localhost:3001');
 });
