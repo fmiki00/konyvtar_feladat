@@ -33,10 +33,11 @@ app.get('/konyvek', (req, res) => {
 
 app.post('/ujkonyv', (req, res) => {
     const konyv = req.body;
-    const sql = 'INSERT INTO konyv (konyvId, konyvCime) VALUES (?, ?)';
+    const sql = 'INSERT INTO konyv (konyvCime, szerzoId, mufajId) VALUES (?, ?, ?)';
 
-    db.query(sql, [konyv.konyvId, konyv.konyvCime], (err, result) => {
+    db.query(sql, [konyv.konyvId, konyv.konyvCime, konyv.szerzoId, konyv.mufajId], (err, result) => {
         if (err) {
+            console.error(err);
             res.status(500).json({ error: 'Hiba az uj konyv hozzaadasakor.' });
         } else {
             res.send('Uj konyv sikeresen hozzaadva.');
